@@ -1,0 +1,32 @@
+{% extends "search/base.html" %}
+
+{% block body %}
+  <div class="container">
+    <h1 class="mb-4">{{ result.name }}</h1><hr>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Cuisine</h3>
+        <p>{{ result.cuisines }}</p>
+        <h3>Price Range</h3>
+        <p> {{ result.price_range }} </p>
+      </div>
+      <div class="col-md-6">
+        <h3>Rating</h3>
+        <p class="text-{{ result.user_rating.rating_color }}">{{ result.user_rating.aggregate_rating }} ({{ result.user_rating.rating_text }})</p>
+        <h3>Location</h3>
+        <p>{{ result.location.address }}, {{ result.location.locality_verbose }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h3>More Information</h3>
+        <ul class="list-group">
+          <li class="list-group-item">Delivery Available: {% if result.is_delivering_now %} Yes {% else %} No {% endif %}</li>
+          <li class="list-group-item">Average Cost for Two: {{ result.average_cost_for_two }}</li>
+          </ul>
+      </div>
+    </div>
+  </div>    
+  
+  {% endblock %}

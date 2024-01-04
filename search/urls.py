@@ -1,5 +1,9 @@
 from django.urls import path
-from .views import SearchDishes
+from .views import SearchDishesView, DetailView
+
+app_name = 'search'
+
 urlpatterns = [
-    path('', SearchDishes.as_view(), name="search"),
+    path('', SearchDishesView.as_view(), name="search"),
+    path('restaurant/<str:id>', DetailView.as_view(), name="detail"),
 ]
