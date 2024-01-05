@@ -15,6 +15,4 @@ class SearchDishesView(View):
 class DetailView(View):
     def get(self, request, id):
         result = Restaurant.objects.get(ID=id)
-        print(result.other_details[0])
-
         return render(request, "search/detail.html", {'result': json.loads(result.other_details)})
